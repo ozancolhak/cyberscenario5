@@ -640,7 +640,7 @@
         <div id="introSection" class="centered-page">
             <h1><i class="fa-solid fa-envelope-open-text"></i> Phishing Kriz Simülasyonu</h1>
             <p style="max-width: 600px;">Hoş geldiniz, ÇOLHAK Teknoloji’nin yeni Siber İstihbarat Şefi! Şirketiniz, ses getiren yapay zeka tabanlı bir ürün geliştiriyor. Ancak rakip bir grup, fikri mülkiyeti çalmak için çok katmanlı bir spear phishing saldırısı başlatıyor. Bu saldırı sadece e-postalarla sınırlı değil — LinkedIn, WhatsApp ve telefon görüşmeleri ile destekleniyor. Görevin: Anormal davranışları tespit edip şirketi bu sinsi saldırıya karşı korumak!</p>
-            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e237357053e1f579" alt="Siber güvenlik temalı bir giriş görseli" class="scenario-image">
+            <img src="intro.png" alt="Siber güvenlik temalı bir giriş görseli" class="scenario-image">
 
             <div class="intro-info-grid">
                 <div class="intro-roles-container">
@@ -1396,7 +1396,7 @@ this.state.totalScore = totalScore;
                             <p>CTI Şefi olarak yeni haftaya başlarken, birden fazla kaynaktan gelen rahatsız edici sinyaller **alarm zillerini** çaldırıyor.</p>
                             <p><strong>Olay 1: CEO'dan Tuhaf E-posta</strong><br>CEO Elara Yılmaz'dan, ekinde 'Proje_AI_Optimizasyon_V3.pdf' bulunan şüpheli bir e-posta aldınız. Dilbilgisi hataları ve gönderen adresindeki küçük bir yazım hatası (<code>.co</code> yerine <code>.com</code>) dikkat çekiyor. Bir hedefli oltalama mı?</p>
                             <p><strong>Olay 2: LinkedIn'den Tuhaf İş Teklifi</strong><br>Ar-Ge mühendisi Ozan Demirci, LinkedIn'den "çok cazip" bir iş teklifi aldığını belirtti. Teklifin rakip bir firmanın "Global Ar-Ge Direktörü"nden geldiği iddia ediliyor. Profil profesyonel görünse de, bazı detaylar Ozan'a tuhaf geliyor ve özel bir portala yönlendiriliyor.</p>
-                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e38f6b0f5139265f" alt="Şüpheli e-posta ve LinkedIn mesajı" class="scenario-image">
+                            <img src="linkedin.png" alt="Şüpheli e-posta ve LinkedIn mesajı" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Siber İstihbarat Şefi olarak ilk adımlarınız ne olacak? Bu iki farklı vektörü nasıl ele alacaksınız? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1422,7 +1422,7 @@ this.state.totalScore = totalScore;
                         <div id="day1_evening_phishing" class="section" data-max-selections="2">
                             <h2><i class="fa-solid fa-cloud-moon"></i> Gün 1: Akşam - İstihbarat Toplama ve Müdahale Stratejisi</h2>
                             <h3>Akşam 18:00 - İçeriden Şüpheler ve Kararlar</h3>
-                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/914c6e91f16d80de" alt="WhatsApp ve telefon görüşmesi ekran görüntüleri" class="scenario-image">
+                            <img src="tespit.png" alt="WhatsApp ve telefon görüşmesi ekran görüntüleri" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Bu yeni ve derinleşen saldırı vektörlerine karşı nasıl bir istihbarat toplama ve müdahale stratejisi izleyeceksiniz? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1440,7 +1440,7 @@ this.state.totalScore = totalScore;
                             <h3>Sabah 10:00 - AI Projesi Tehlikede! Cemil Kaan Şüphesi!</h3>
                             <p>E-posta analizi yapıldıysa, CEO'ya gelen e-postadaki zararlı yazılımın analizi tamamlandı. Yazılımın **'Proje Yapay Zeka' klasörüne erişmeye çalıştığı** tespit edildi. Bu, fikri mülkiyetin hedef alındığını gösteriyor. LinkedIn, WhatsApp ve telefon görüşmeleri, bu erişim için personel güvenini kazanma çabalarıydı.</p>
                             <p>En endişe verici gelişme: Eğer personel görüşmeleri veya iç ağ izlemesi yaptıysanız, **Finans Departmanından Cemil Kaan'ın, kriz başında normalde erişimi olmayan kritik klasöre anormal erişim denemeleri yaptığı** ortaya çıktı. Cemil'in finansal sıkıntıları ve rakip teklif dedikoduları da mevcut.</p>
-                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e0cc37682dd40989" alt="AI projesi veri sızıntısı riski" class="scenario-image">
+                            <img src="risk.png" alt="AI projesi veri sızıntısı riski" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Fikri mülkiyeti korumak, saldırıyı durdurmak ve iç tehdidi yönetmek için en kritik eylemleriniz ne olacak? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1458,7 +1458,7 @@ this.state.totalScore = totalScore;
                             <h2><i class="fa-solid fa-lightbulb"></i> Gün 2: Öğleden Sonra - Kriz Yönetimi ve Karar Alma (Yüksek Baskı)</h2>
                             <h3>Öğleden Sonora 15:30 - Kriz Ekibi Baskı Altında</h3>
                             <p>Saldırı detayları netleşti: Yapay zeka projenizin fikri mülkiyeti ciddi tehdit altında ve <span id="cemil-status">${game.state.cemilConfronted ? '<strong>Cemil Kaan\'ın manipüle edildiği veya içeriden bilgi sızdırdığı itirafı alındı.</strong>' : 'içeriden bir "köstebek" veya manipüle edilmiş bir çalışan şüphesi var.'}</span> CEO hızla aksiyon ve net mesaj istiyor. Finans Direktörü hukuki süreçler ve kayıplar konusunda endişeli. İK Direktörü çalışan moralini ve güvenini vurguluyor.</p>
-                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e6113b567d4f9d45" alt="Kriz yönetim ekibi" class="scenario-image">
+                            <img src="team.png" alt="Kriz yönetim ekibi" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Krizin bu aşamasında, hangi stratejik kararları alacaksınız? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1475,7 +1475,7 @@ this.state.totalScore = totalScore;
                             <h2><i class="fa-solid fa-check-circle"></i> Gün 3: Sabah - Toparlanma ve Gelecek Stratejileri</h2>
                             <h3>Sabah 11:00 - Kriz Sonrası Toparlanma</h3>
                             <p>Olayın en yoğun dönemi geride kaldı. Saldırının kapsamı ve etkileri anlaşıldı ${game.state.cemilConfronted ? 've Cemil Kaan\'ın durumu ele alındı.' : '.'} ÇOLHAK Teknoloji'nin bu deneyimden ders çıkarıp gelecekteki siber tehditlere karşı daha dirençli hale gelmesi gerekiyor. Fikri mülkiyetin korunması, çalışan güveninin yeniden sağlanması ve şirketin itibarının onarılması öncelikler arasında. Siber İstihbarat Şefi olarak, dersleri somut eylem planlarına dönüştürme ve uzun vadeli bir güvenlik stratejisi önerme göreviniz var.</p>
-                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/ab24b890a2a1b9f6" alt="Kurtarma ve iyileşme çabaları görseli" class="scenario-image">
+                            <img src="kurtarma.png" alt="Kurtarma ve iyileşme çabaları görseli" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Şirketinizin gelecekteki siber dayanıklılığı için hangi uzun vadeli stratejileri önereceksiniz? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1640,4 +1640,5 @@ this.state.totalScore = totalScore;
     </script>
 </body>
 </html>
+
 
