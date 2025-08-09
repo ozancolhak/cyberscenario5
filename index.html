@@ -335,8 +335,8 @@
 
         .final-metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             margin-top: 30px;
             width: 100%;
             max-width: 850px;
@@ -565,6 +565,74 @@
             font-size: 1.1em;
             margin-bottom: 15px;
         }
+
+        /* YENİ EKLENEN STİLLER */
+        #score-breakdown { list-style: none; padding: 0; margin-top: 15px; text-align: left; }
+        #score-breakdown li { padding: 8px 12px; border-radius: 6px; margin-bottom: 8px; font-size: 1.05em; display: flex; justify-content: space-between; }
+        #score-breakdown .score-plus { background-color: rgba(80, 250, 123, 0.1); border-left: 3px solid var(--accent-green); }
+        #score-breakdown .score-minus { background-color: rgba(255, 85, 85, 0.1); border-left: 3px solid var(--accent-red); }
+        #score-breakdown .score-neutral { background-color: rgba(139, 233, 253, 0.1); border-left: 3px solid var(--accent-blue); }
+        #score-breakdown .score-value { font-weight: bold; }
+
+        .lb-overlay{
+            display:none; position:fixed; inset:0;
+            background: rgba(10,10,25,.7);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            z-index:9999; align-items:center; justify-content:center; padding:20px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .lb-modal{
+            background: linear-gradient(180deg, #2a2a4a 0%, #1f1f36 100%);
+            color: var(--text-light);
+            width:100%; max-width: 760px; border-radius:14px; padding:22px 22px 16px;
+            border:1px solid rgba(255,255,255,.08);
+            box-shadow: 0 18px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04);
+        }
+        .lb-header{
+            display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px;
+        }
+        .lb-title{
+            display:flex; align-items:center; gap:10px;
+            font-size:1.25em; font-weight:800; letter-spacing:.2px; color: var(--accent-yellow);
+        }
+        .lb-title i{ filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
+        .lb-tablewrap{
+            margin-top:10px;
+            max-height: 60vh; overflow:auto;
+            border:1px solid var(--interactive-bg); border-radius:10px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+        }
+        table.lb-table{ width:100%; border-collapse:collapse; font-size:.97em; }
+        table.lb-table th, table.lb-table td{ padding:10px 12px; text-align:left; }
+        table.lb-table thead th{
+            position: sticky; top:0; z-index:1;
+            background:#1f1f36; color:#e9e9ff;
+            border-bottom: 1px solid #3b3b66;
+            font-weight:700; letter-spacing:.3px;
+        }
+        table.lb-table tbody td{ border-bottom:1px solid rgba(255,255,255,.06); color:#e9e9f5; }
+        table.lb-table tbody tr:hover{ background-color: rgba(255,255,255,.045); }
+        table.lb-table tbody tr:nth-child(1){ background: linear-gradient(90deg, rgba(255,215,0,.18), transparent 65%); }
+        table.lb-table tbody tr:nth-child(1) td:first-child::after{ content:" 🥇"; }
+        table.lb-table tbody tr:nth-child(2){ background: linear-gradient(90deg, rgba(192,192,192,.18), transparent 65%); }
+        table.lb-table tbody tr:nth-child(2) td:first-child::after{ content:" 🥈"; }
+        table.lb-table tbody tr:nth-child(3){ background: linear-gradient(90deg, rgba(205,127,50,.18), transparent 65%); }
+        table.lb-table tbody tr:nth-child(3) td:first-child::after{ content:" 🥉"; }
+        .lb-actions{ display:flex; gap:12px; justify-content:flex-end; margin-top:14px; }
+        .lb-close, .lb-refresh{
+            border:0; border-radius:10px; padding:10px 14px; cursor:pointer; font-weight:700;
+            transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+        }
+        .lb-refresh{ background: var(--accent-blue); color:#0c1130; }
+        .lb-close{ background: #3d3d60; color:#fff; }
+        .lb-refresh:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(139,233,253,.22); }
+        .lb-close:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.35); }
+        @media (max-width: 420px){
+            .lb-title{ font-size:1.05em; }
+            table.lb-table th, table.lb-table td{ padding:9px 10px; }
+        }
+
     </style>
 </head>
 <body>
@@ -572,7 +640,7 @@
         <div id="introSection" class="centered-page">
             <h1><i class="fa-solid fa-envelope-open-text"></i> Phishing Kriz Simülasyonu</h1>
             <p style="max-width: 600px;">Hoş geldiniz, ÇOLHAK Teknoloji’nin yeni Siber İstihbarat Şefi! Şirketiniz, ses getiren yapay zeka tabanlı bir ürün geliştiriyor. Ancak rakip bir grup, fikri mülkiyeti çalmak için çok katmanlı bir spear phishing saldırısı başlatıyor. Bu saldırı sadece e-postalarla sınırlı değil — LinkedIn, WhatsApp ve telefon görüşmeleri ile destekleniyor. Görevin: Anormal davranışları tespit edip şirketi bu sinsi saldırıya karşı korumak!</p>
-            <img src="intro.png" alt="Siber güvenlik temalı bir giriş görseli" class="scenario-image">
+            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e237357053e1f579" alt="Siber güvenlik temalı bir giriş görseli" class="scenario-image">
 
             <div class="intro-info-grid">
                 <div class="intro-roles-container">
@@ -613,8 +681,32 @@
                 <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Finansal Zarar</span><div class="value" id="status-financialLoss">₺0</div></div>
                 <div class="metric"><span><i class="fa-solid fa-users"></i> Çalışan Güveni</span><div class="value" id="status-employeeTrust">100</div></div>
                 <div class="metric"><span><i class="fa-solid fa-building-shield"></i> İtibar Puanı</span><div class="value" id="status-reputation">100</div></div>
+                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Kalan Süre</span><div class="value" id="status-remaining">05:00</div></div>
             </div>
             <div id="game-content">
+            </div>
+        </div>
+    </div>
+
+    <div class="lb-overlay" id="leaderboardOverlay" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+        <div class="lb-modal">
+            <div class="lb-header">
+                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Liderlik Tablosu</h2>
+                <span class="lb-sub">Phishing Simülasyonu En İyileri</span>
+            </div>
+            <div class="lb-tablewrap">
+                <table class="lb-table" id="leaderboardTable">
+                    <thead>
+                        <tr><th>#</th><th>İsim</th><th>Puan</th><th>Tarih</th></tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <tr><td colspan="4">Yükleniyor…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="lb-actions">
+                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Yenile</button>
+                <button class="lb-close" id="lbCloseBtn">Kapat</button>
             </div>
         </div>
     </div>
@@ -633,9 +725,17 @@
                     protocolsRevised: false, ipSecurityEnhanced: false, reputationCampaignLaunched: false, employeeSupportInitiated: false, insiderThreatProgramStarted: false,
                     decisionHistory: [],
                     currentTurnDecisions: [], // Store full decision info for the current turn
+                    totalScore: null,
                 },
 
                 elements: {},
+                
+                timer: {
+                    total: 300, // 5 dakika
+                    remaining: 300,
+                    intervalId: null,
+                    running: false
+                },
                 
                 decisionInfo: {
                     // Day 1 Morning
@@ -794,7 +894,7 @@
                         title: "AI Projesi Fikri Mülkiyet Güvenliğinin Kapsamlı Artırılması",
                         text: "AI projesinin kod tabanı, algoritmaları ve veri setleri için ek güvenlik katmanları (DAC, MAC, DLP, IRM) uyguladınız. Kritik verilere erişimi sürekli izleyen otomatik sistemler kurdunuz. En değerli varlığınızı korudunuz.",
                         strat: "Kritik fikri mülkiyetin korunması, en önemli varlığı güvence altına alır. Sürekli, katmanlı ve teknoloji destekli bir güvenlik yaklaşımı gerektirir.",
-                        changes: { financialLoss: 100000, ipIntegrity: +20, reputation: +5, financialLoss: -5000 }, 
+                        changes: { financialLoss: 100000, ipIntegrity: +20, reputation: +5 },
                         clue: 'ipSecurityEnhanced',
                         impact: 'Positive',
                     },
@@ -802,7 +902,7 @@
                         title: "Proaktif İtibar Yönetimi ve Şeffaflık Kampanyası",
                         text: "Kamuoyuna tam şeffaflık içeren, saldırının sektörün ortak problemi olduğunu vurgulayan, proaktif bir itibar yönetimi kampanyası başlattınız. Şirket itibarını önemli ölçüde güçlendirdiniz ve siber güvenlik alanındaki liderliğinizi pekiştirdiniz.",
                         strat: "Krizde kamuoyu iletişimi şirket itibarını doğrudan etkiler. Dengeli, şeffaf açıklama kritik öneme sahiptir. Krizleri fırsata çevirmek stratejiktir.",
-                        changes: { financialLoss: 120000, reputation: +15, employeeTrust: +5, financialLoss: -10000 },
+                        changes: { financialLoss: 120000, reputation: +15, employeeTrust: +5},
                         clue: 'reputationCampaignLaunched',
                         impact: 'Positive',
                     },
@@ -810,7 +910,7 @@
                         title: "Çalışan Psikolojik Destek ve Güven Yeniden Yapılandırma Programları",
                         text: "Çalışanlar üzerindeki olumsuz etkileri azaltmak için psikolojik destek ve moral artırıcı etkinlikler başlattınız. Çalışanların güvenini yeniden kazanmalarına ve bağlılıklarını artırmalarına yardımcı oldunuz. İç dayanıklılığı güçlendi.",
                         strat: "Çalışanların refahı ve güvenliği, şirket dayanıklılığının temelidir. Kriz sonrası moral ve güvenin yeniden inşası hayati öneme sahiptir. İnsan odaklı yaklaşım kritik.",
-                        changes: { financialLoss: 30000, employeeTrust: +10, reputation: +2, financialLoss: -2000 },
+                        changes: { financialLoss: 30000, employeeTrust: +10, reputation: +2},
                         clue: 'employeeSupportInitiated',
                         impact: 'Positive',
                     },
@@ -830,18 +930,35 @@
                         startButton: document.getElementById('startButton'), intermission: document.getElementById('intermissionSection'),
                         intermissionTitle: document.getElementById('intermissionTitle'), intermissionDetails: document.getElementById('intermissionDetails'),
                         continueButton: document.getElementById('continueButton'),
-                        statusBar: { ipIntegrity: document.getElementById('status-ipIntegrity'), financialLoss: document.getElementById('status-financialLoss'), employeeTrust: document.getElementById('status-employeeTrust'), reputation: document.getElementById('status-reputation') }
+                        statusBar: { 
+                            ipIntegrity: document.getElementById('status-ipIntegrity'), 
+                            financialLoss: document.getElementById('status-financialLoss'), 
+                            employeeTrust: document.getElementById('status-employeeTrust'), 
+                            reputation: document.getElementById('status-reputation'),
+                            remaining: document.getElementById('status-remaining')
+                        },
+                        leaderboard: {
+                            overlay: document.getElementById('leaderboardOverlay'),
+                            body: document.getElementById('leaderboardBody'),
+                            btnClose: document.getElementById('lbCloseBtn'),
+                            btnRefresh: document.getElementById('lbRefreshBtn'),
+                            btnOpen: document.querySelector('#finalSection .decision-buttons #openLeaderboardBtn')
+                        }
                     };
                     this.loadGameHTML();
-                    
-                    // Attach event listener for start button
+                    this.attachListeners();
+                },
+                
+                attachListeners() {
+                     // Start button
                     this.elements.startButton.addEventListener('click', () => {
                         this.elements.intro.style.display = 'none';
                         this.elements.game.style.display = 'block';
+                        this.startGlobalTimer();
                         this.showSection('day1_morning_phishing');
                     });
                     
-                    // Attach event listener for decision buttons in game content
+                    // Decision buttons in game content
                     this.elements.gameContent.addEventListener('click', (e) => {
                         const button = e.target.closest('.btn[data-decision]');
                         if (!button || button.disabled) return;
@@ -850,62 +967,43 @@
                         const decisionId = button.dataset.decision;
                         const info = this.decisionInfo[decisionId];
 
-                        // Disable the clicked button immediately
                         button.disabled = true;
-
-                        // Add decision to current turn's list
                         this.state.currentTurnDecisions.push(info);
                         
-                        // Apply score changes (these are applied on each click, not just at intermission)
                         this.score.financialLoss += info.changes.financialLoss || 0;
                         this.score.reputation = Math.max(0, Math.min(100, this.score.reputation + (info.changes.reputation || 0)));
                         this.score.ipIntegrity = Math.max(0, Math.min(100, this.score.ipIntegrity + (info.changes.ipIntegrity || 0)));
                         this.score.employeeTrust = Math.max(0, Math.min(100, this.score.employeeTrust + (info.changes.employeeTrust || 0)));
-                        this.state[info.clue] = true; // Set clue state
-                        this.updateStatusBar(); // Update status bar immediately
+                        this.state[info.clue] = true;
+                        this.updateStatusBar();
 
                         const maxSelections = parseInt(sectionElement.dataset.maxSelections || 1, 10);
                         
-                        // If it's the "Day 1 Afternoon" section, we skip intermission and go directly to evening
                         if (this.state.currentSectionId === 'day1_afternoon_phishing') {
                             this.elements.game.style.display = 'none';
-                            // This part ensures that the decisions are logged before proceeding
                             this.state.currentTurnDecisions.forEach(decision => {
-                                this.state.decisionHistory.push({ 
-                                    id: decision.clue, 
-                                    title: decision.title, 
-                                    text: decision.text, 
-                                    impactType: decision.impact 
-                                });
+                                this.state.decisionHistory.push({ id: decision.clue, title: decision.title, text: decision.text, impactType: decision.impact });
                             });
-                            this.state.currentTurnDecisions = []; // Clear for next turn
-                            this.showSection('day1_evening_phishing'); // Directly proceed
+                            this.state.currentTurnDecisions = [];
+                            this.showSection('day1_evening_phishing');
                         } else if (this.state.currentTurnDecisions.length >= maxSelections) {
                             this.elements.game.style.display = 'none';
                             this.showFullIntermission();
                         } else {
-                            // If not all decisions made for the turn, just update button states and wait for next click
                             this.updateButtonStates(this.state.currentSectionId); 
                         }
                     });
 
-                    // Attach event listener for the general continue button in intermission (for Day 1 Morning decisions)
+                    // General continue button
                     this.elements.continueButton.addEventListener('click', () => {
-                        // Add decisions from the current turn to the historical decision history *after* intermission is shown
                         this.state.currentTurnDecisions.forEach(decision => {
-                            this.state.decisionHistory.push({ 
-                                id: decision.clue, // Using clue as ID for history
-                                title: decision.title, 
-                                text: decision.text, 
-                                impactType: decision.impact 
-                            });
+                            this.state.decisionHistory.push({ id: decision.clue, title: decision.title, text: decision.text, impactType: decision.impact });
                         });
 
                         const nextPath = this.elements.continueButton.dataset.nextPath;
                         this.elements.intermission.style.display = 'none';
-                        this.elements.continueButton.style.display = 'none'; // Hide continue button for next section setup
+                        this.elements.continueButton.style.display = 'none';
 
-                        // Clear decisions for the next turn
                         this.state.currentTurnDecisions = [];
                         
                         if (nextPath === 'finalSection') {
@@ -916,13 +1014,20 @@
                         }
                     });
 
+                    // Leaderboard listeners
+                    this.elements.leaderboard.btnOpen?.addEventListener('click', () => this.openLeaderboard());
+                    this.elements.leaderboard.btnClose?.addEventListener('click', () => this.closeLeaderboard());
+                    this.elements.leaderboard.btnRefresh?.addEventListener('click', () => this.loadLeaderboard());
+                    this.elements.leaderboard.overlay.addEventListener('click', (e) => {
+                        if (e.target === this.elements.leaderboard.overlay) this.closeLeaderboard();
+                    });
+
                     this.updateStatusBar();
                 },
-                
+
                 showFullIntermission() {
                     this.elements.intermissionDetails.innerHTML = ''; // Clear previous details
 
-                    // Sum up all changes from decisions made in this turn
                     let totalChanges = { financialLoss: 0, ipIntegrity: 0, employeeTrust: 0, reputation: 0 };
                     let combinedDecisionTitles = [];
                     let combinedDecisionTexts = [];
@@ -939,10 +1044,8 @@
                         combinedStrategicNotes.push(info.strat);
                     });
 
-                    // Set intermission title directly to "Bu Seçimlerin Toplam Etkileri"
                     this.elements.intermissionTitle.textContent = "Bu Seçimlerin Toplam Etkileri"; 
                     
-                    // Add the combined metrics summary container (directly after the title)
                     this.elements.intermissionDetails.insertAdjacentHTML('afterbegin', `
                         <div class="metric-change-summary-container">
                             <div class="metric-change-summary">
@@ -951,7 +1054,6 @@
                         </div>
                     `);
 
-                    // Add the combined decision details below the total impacts
                     this.elements.intermissionDetails.insertAdjacentHTML('beforeend', `
                         <div class="interactive-element" style="width: 100%; max-width: 600px; margin-top: 30px;">
                             <h4><i class="fa-solid fa-check-circle"></i> Seçimlerinizin Detayları: ${combinedDecisionTitles.join(' & ')}</h4>
@@ -963,12 +1065,9 @@
                         </div>
                     `);
 
-
                     let nextSectionToGo;
-                    // Corrected navigation logic for all sections
                     switch(this.state.currentSectionId) {
                         case 'day1_morning_phishing': nextSectionToGo = 'day1_afternoon_phishing'; break;
-                        // Day1_afternoon_phishing'den sonra direkt evening'e geçmek için burada zaten özel bir buton var, bu kısmı atlıyoruz
                         case 'day1_evening_phishing': nextSectionToGo = 'day2_morning_ipthreat'; break;
                         case 'day2_morning_ipthreat': nextSectionToGo = 'day2_afternoon_crisis_mgmt'; break;
                         case 'day2_afternoon_crisis_mgmt': nextSectionToGo = 'day3_morning_resolution'; break;
@@ -978,7 +1077,7 @@
 
                     this.elements.continueButton.dataset.nextPath = nextSectionToGo;
                     this.elements.intermission.style.display = 'flex';
-                    this.elements.continueButton.style.display = 'flex'; // Show continue button
+                    this.elements.continueButton.style.display = 'flex';
                 },
 
                 getMetricsHtml(changes) {
@@ -999,7 +1098,6 @@
                         else if (label === 'Fikri Mülkiyet') icon = 'fa-lock';
                         else if (label === 'Çalışan Güveni') icon = 'fa-users';
                         else if (label === 'İtibar Puanı') icon = 'fa-building-shield';
-
 
                         return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('tr-TR')}${unit}</div>`;
                     };
@@ -1031,13 +1129,10 @@
                         this.updateButtonStates(sectionId);
                         this.state.currentTurnDecisions = []; // Reset for new section
                         
-                        // Handle the specific "Devam Et" button for day1_afternoon_phishing
                         const day1AfternoonContinueBtn = document.querySelector('#day1_afternoon_phishing .btn-continue');
                         if (day1AfternoonContinueBtn) {
                             day1AfternoonContinueBtn.style.display = (sectionId === 'day1_afternoon_phishing') ? 'flex' : 'none';
                         }
-
-                        // Hide the general intermission continue button when a new game section is shown
                         this.elements.continueButton.style.display = 'none'; 
 
                     } else {
@@ -1052,7 +1147,6 @@
                     if (!currentSectionElement) return;
 
                     const decisionButtonsContainer = currentSectionElement.querySelector('.decision-buttons');
-                    // If the current section does not have decision buttons (like day1_afternoon_phishing), skip this logic.
                     if (!decisionButtonsContainer) {
                         return; 
                     }
@@ -1062,31 +1156,21 @@
                         const decisionId = button.dataset.decision;
                         const info = this.decisionInfo[decisionId];
 
-                        // Disable button if its clue is already set or it's part of current turn's selections
                         const alreadySelectedInCurrentTurn = this.state.currentTurnDecisions.some(d => d.clue === info.clue);
 
                         if (info && (this.state[info.clue] || alreadySelectedInCurrentTurn)) {
                             button.disabled = true;
-                            button.style.backgroundColor = '#555';
-                            button.style.color = '#999';
                         } else {
                             button.disabled = false;
-                            button.style.backgroundColor = ''; 
-                            button.style.color = ''; 
                         }
 
-                        // Special case: Cemil Kaan management button
                         if (decisionId === 'd2-a-cemil-management') {
                             if (!this.state.cemilConfronted) {
                                 button.disabled = true;
-                                button.style.backgroundColor = '#555';
-                                button.style.color = '#999';
                                 button.querySelector('small').textContent = 'Bu seçenek, sadece Cemil Kaan ile yüzleşip itirafını aldıysanız geçerlidir.';
                                 button.style.cursor = 'not-allowed';
-                            } else if (!alreadySelectedInCurrentTurn) { // Re-enable if Cemil confronted and not yet selected in this turn
+                            } else if (!alreadySelectedInCurrentTurn) {
                                 button.disabled = false;
-                                button.style.backgroundColor = '';
-                                button.style.color = '';
                                 button.querySelector('small').textContent = 'Cemil Kaan\'ın durumunu İnsan Kaynakları ve Hukuk departmanları ile birlikte yönetmek için acil bir gizlilik anlaşması ve psikolojik destek süreci başlat.';
                                 button.style.cursor = 'pointer';
                             }
@@ -1095,6 +1179,7 @@
                 },
                 
                 showFinalReport() {
+                    this.stopGlobalTimer();
                     this.elements.intro.style.display = 'none';
                     this.elements.intermission.style.display = 'none';
                     this.elements.game.style.display = 'block'; 
@@ -1113,46 +1198,120 @@
                     const metricsContainer = document.getElementById('finalMetricsContainer');
                     const timelineList = document.getElementById('decision-timeline-list');
                     const debriefContent = document.getElementById('strategic-debrief-content');
-                    const recommendationsList = document.getElementById('recommendations-list');
+                    const scoreBreakdownList = document.getElementById('score-breakdown');
 
-                    const finalIP = Math.max(0, this.score.ipIntegrity);
-                    const finalRep = Math.max(0, this.score.reputation);
-                    const finalTrust = Math.max(0, this.score.employeeTrust);
+                  // --- YENİ VE ZORLAŞTIRILMIŞ PUANLAMA SİSTEMİ ---
+let scoreBreakdown = {};
+let totalScore = 45; // DEĞİŞTİ: Baz puan daha da düşürüldü.
+scoreBreakdown['Başlangıç Puanı'] = { value: 45, class: 'score-neutral' };
 
-                    let totalScore = (finalRep * 0.35) + (finalIP * 0.3) + (finalTrust * 0.15) - (this.score.financialLoss / 100000); 
-                    totalScore = Math.round(Math.max(0, Math.min(100, totalScore))); 
+// YENİ: Karar Kalitesine Göre Ceza/Ödül Puanlaması (ÖNCEKİ CEVAPTAN)
+// Bu kısım oyuncunun kötü seçimlerini doğrudan cezalandırdığı için çok önemlidir.
+let decisionQualityScore = 0;
+this.state.decisionHistory.forEach(decision => {
+    if (decision.impactType === 'Negative') {
+        decisionQualityScore -= 8; // Her kötü karar için ceza
+    } else if (decision.impactType === 'Positive') {
+        decisionQualityScore += 2; // Her iyi karar için küçük bir ödül
+    }
+});
+if (decisionQualityScore !== 0) {
+    totalScore += decisionQualityScore;
+    scoreBreakdown['Karar Kalitesi (Ceza/Ödül)'] = { value: decisionQualityScore, class: decisionQualityScore >= 0 ? 'score-plus' : 'score-minus' };
+}
+
+const finalIP = Math.max(0, this.score.ipIntegrity);
+const finalRep = Math.max(0, this.score.reputation);
+const finalTrust = Math.max(0, this.score.employeeTrust);
+const avgRepTrust = (finalRep + finalTrust) / 2;
+
+// DEĞİŞTİ: Puanlar tutarlı ve daha dengeli hale getirildi.
+// IP Integrity
+if (finalIP >= 90) { 
+    totalScore += 15; 
+    scoreBreakdown['Fikri Mülkiyet Koruması (Mükemmel)'] = { value: 15, class: 'score-plus' }; 
+} else if (finalIP >= 75) { 
+    totalScore += 8; // HATA DÜZELTİLDİ ve değer düşürüldü
+    scoreBreakdown['Fikri Mülkiyet Koruması (İyi)'] = { value: 8, class: 'score-plus' }; 
+} else if (finalIP < 50) { 
+    totalScore -= 15; 
+    scoreBreakdown['Fikri Mülkiyet Kaybı (Ciddi)'] = { value: -15, class: 'score-minus' }; 
+}
+        
+// Financial Loss
+if (this.score.financialLoss <= 150000) { 
+    totalScore += 10; 
+    scoreBreakdown['Finansal Yönetim (Etkili)'] = { value: 10, class: 'score-plus' }; 
+} else if (this.score.financialLoss <= 300000) { 
+    totalScore += 5; 
+    scoreBreakdown['Finansal Yönetim (Orta)'] = { value: 5, class: 'score-plus' }; 
+} else if (this.score.financialLoss > 500000) { 
+    totalScore -= 15; // Ceza artırıldı
+    scoreBreakdown['Finansal Kayıp (Yüksek)'] = { value: -15, class: 'score-minus' }; 
+}
+
+// Reputation & Trust
+if (avgRepTrust >= 85) { // Baraj yükseltildi
+    totalScore += 10; 
+    scoreBreakdown['İtibar & Güven Yönetimi (Güçlü)'] = { value: 10, class: 'score-plus' }; 
+} else if (avgRepTrust < 50) { // Baraj yükseltildi
+    totalScore -= 15; 
+    scoreBreakdown['İtibar & Güven Kaybı (Yüksek)'] = { value: -15, class: 'score-minus' }; 
+}
+
+// Critical Decisions Bonus (DEĞİŞTİ: Bonuslar düşürüldü)
+if(this.state.systemsIsolated) { 
+    totalScore += 7; 
+    scoreBreakdown['Kritik Karar: Sistem İzolasyonu'] = { value: 7, class: 'score-plus' }; 
+}
+if(this.state.cemilConfronted && this.state.cemilManaged) { 
+    totalScore += 7; 
+    scoreBreakdown['Kritik Karar: İç Tehdit Yönetimi'] = { value: 7, class: 'score-plus' }; 
+}
+if(this.state.usomCollaboration) { 
+    totalScore += 3; 
+    scoreBreakdown['Stratejik Karar: USOM İşbirliği'] = { value: 3, class: 'score-plus' }; 
+}
+if(this.state.reputationCampaignLaunched) { 
+    totalScore += 3; 
+    scoreBreakdown['Stratejik Karar: İtibar Kampanyası'] = { value: 3, class: 'score-plus' }; 
+}
+
+// Time Bonus (DEĞİŞTİ: Bonuslar düşürüldü)
+if (this.timer.remaining >= 180) { // 3 dakika
+    totalScore += 5; 
+    scoreBreakdown['Hızlı Müdahale Bonusu'] = { value: 5, class: 'score-plus' }; 
+} 
+
+totalScore = Math.round(Math.max(0, Math.min(100, totalScore))); 
+this.state.totalScore = totalScore;
+// --- PUANLAMA SİSTEMİ SONU ---
 
                     let badgeInfo = {};
-                    
-                    const totalPossibleDecisions = 2 * 5; 
-                    let decisionsMadeCount = this.state.decisionHistory.length; 
-                    const percentDecisionsMade = (decisionsMadeCount / totalPossibleDecisions) * 100; 
-
-                    if (totalScore >= 90 && percentDecisionsMade >= 75) {
-                        badgeInfo = { text: 'SİBER KAHRAMAN', color: 'var(--accent-green)' };
-                    } else if (totalScore >= 85 && finalIP >=70 ) {
-                        badgeInfo = { text: 'UZMAN KRİZ YÖNETİCİSİ', color: 'var(--accent-blue)' };
-                    } else if (totalScore >= 60) {
-                        badgeInfo = { text: 'ZORLU BİR MÜCADELE', color: 'var(--accent-yellow)' };
-                    } else {
-                        badgeInfo = { text: 'CİDDİ HASAR', color: '#ff5555' };
-                    }
+                    if (totalScore >= 90) { badgeInfo = { text: 'SİBER KAHRAMAN', color: 'var(--accent-green)' }; } 
+                    else if (totalScore >= 75) { badgeInfo = { text: 'UZMAN KRİZ YÖNETİCİSİ', color: 'var(--accent-blue)' }; } 
+                    else if (totalScore >= 50) { badgeInfo = { text: 'ZORLU BİR MÜCADELE', color: 'var(--accent-yellow)' }; } 
+                    else { badgeInfo = { text: 'CİDDİ HASAR', color: '#ff5555' }; }
 
                     badge.textContent = badgeInfo.text;
                     badge.style.backgroundColor = badgeInfo.color;
 
                     metricsContainer.innerHTML = `
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div><div class="label">Nihai Puan</div><div class="value">${totalScore}/100</div></div>
                         <div class="metric-card"><div class="icon"><i class="fa-solid fa-building-shield"></i></div><div class="label">İtibar Puanı</div><div class="value">${finalRep}/100</div></div>
                         <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Finansal Zarar</div><div class="value">₺${this.score.financialLoss.toLocaleString('tr-TR')}</div></div>
                         <div class="metric-card"><div class="icon"><i class="fa-solid fa-lock"></i></div><div class="label">Fikri Mülkiyet</div><div class="value">${finalIP}%</div></div>
                         <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">Çalışan Güveni</div><div class="value">${finalTrust}/100</div></div>
                     `;
 
-                    // Only show title in timeline
                     timelineList.innerHTML = this.state.decisionHistory.map(decision => {
                         let liClass = decision.impactType === 'Positive' ? 'positive' : (decision.impactType === 'Negative' ? 'negative' : 'neutral');
-                        // Sadece başlığı göster
                         return `<li class="${liClass}"><span class="decision-title">${decision.title}</span></li>`;
+                    }).join('');
+
+                    scoreBreakdownList.innerHTML = Object.entries(scoreBreakdown).map(([key, item]) => {
+                        const sign = item.value > 0 ? '+' : '';
+                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Puan</span></li>`;
                     }).join('');
 
                     let debriefHTML = '';
@@ -1166,43 +1325,7 @@
                         debriefHTML += `<p><strong>Ciddi Sonuçlar:</strong> Çok kanallı oltalama saldırısı, ÇOLHAK Teknoloji'ye ciddi zararlar verdi. Fikri mülkiyetimizde büyük sızıntılar yaşandı, finansal kayıplar çok yüksek ve şirket itibarımız ciddi şekilde zedelendi. Çalışanların güveni sarsıldı. Bu deneyimden acilen ders çıkararak güvenlik stratejilerimizi kökten değiştirmeli ve daha güçlü savunma mekanizmaları inşa etmeliyiz.</p>`;
                     }
                     debriefContent.innerHTML = debriefHTML;
-
-                    let recommendationsHTML = new Set();
-                    recommendationsHTML.add(`<li><strong>Kapsamlı Oltalama Farkındalık Eğitimi:</strong> Tüm çalışanlar için düzenli ve simülasyon tabanlı oltalama, vishing ve smishing farkındalık eğitimleri yapılmalı.</li>`);
-                    recommendationsHTML.add(`<li><strong>Çok Faktörlü Kimlik Doğrulama (MFA) Zorunluluğu:</strong> Tüm kurumsal hesaplar ve kritik sistemler için MFA zorunlu hale getirilmeli.</li>`);
-                    recommendationsHTML.add(`<li><strong>Sosyal Medya Güvenliği Politikası:</strong> Çalışanların profesyonel sosyal medya kullanımı için net politikalar ve eğitimler sağlanmalı.</li>`);
-                    recommendationsHTML.add(`<li><strong>İnsan İstihbaratı (HUMINT) Geliştirme:</strong> Siber İstihbarat ekibinin, şirket içi anormal davranışları ve "fısıltıları" tespit etme yeteneği artırılmalı.</li>`);
-                    recommendationsHTML.add(`<li><strong>Kriz İletişim Planı Güncellemesi:</strong> Çok kanallı sosyal mühendislik saldırılarına özel senaryoları içeren güncel bir kriz iletişim planı oluşturulmalı ve düzenli tatbikatlar yapılmalı.</li>`);
-                    recommendationsHTML.add(`<li><strong>Fikri Mülkiyet Koruma Stratejisi:</strong> Kritik AI projesi verileri için daha sıkı erişim kontrolleri, şifreleme ve DLP (Data Loss Prevention) çözümleri uygulanmalı.</li>`);
-                    
-                    if (!this.state.emailAnalyzed || !this.state.linkedinProfileAnalyzed || !this.state.whatsappForensicallyExamined || !this.state.vishingAnalyzed) {
-                        recommendationsHTML.add(`<li><strong>Saldırı Vektörü Analizi Geliştirme:</strong> Gelecekteki çok kanallı saldırıları daha hızlı tespit edebilmek için email, sosyal medya, mesajlaşma ve telefon kanallarındaki tehdit analizi süreçleri güçlendirilmeli.</li>`);
-                    }
-                    if (this.score.employeeTrust < 80) {
-                        recommendationsHTML.add(`<li><strong>Çalışan Psikolojik Destek ve Güven Yeniden Yapılandırma:</strong> Krizin çalışanlar üzerindeki etkisini gidermek ve moral yükseltmek için psikolojik destek ve ekip etkinlikleri düzenlenmeli.</li>`);
-                    }
-                    if (this.score.financialLoss > 200000) {
-                        recommendationsHTML.add(`<li><strong>Siber Sigorta Poliçesi Gözden Geçirme:</strong> Mevcut siber sigorta poliçesi, kimlik avı ve fikri mülkiyet hırsızlığını kapsayacak şekilde genişletilmeli.</li>`);
-                    }
-                    if (!this.state.malwareAnalyzed || !this.state.systemsIsolated) {
-                        recommendationsHTML.add(`<li><strong>Olay Müdahale ve İzolasyon Hızlandırma:</strong> Zararlı yazılım analizi ve sistem izolasyonu süreçleri otomatize edilerek müdahale süreleri kısaltılmalı.</li>`);
-                    }
-                    if (!this.state.insiderThreatProgramStarted) { 
-                            recommendationsHTML.add(`<li><strong>İç Tehdit Programı Oluşturma:</strong> İç tehditleri proaktif olarak tespit etmek için davranışsal analiz araçları ve süreçleri geliştirilmeli.</li>`);
-                    }
-                    if (!this.state.crisisMeetingHeld || !this.state.publicStatementPrepared || !this.state.externalForensicHired) { 
-                        recommendationsHTML.add(`<li><strong>Kapsamlı Kriz Yönetimi Tatbikatları:</strong> Tüm paydaşların katılımıyla gerçekçi kriz yönetimi tatbikatları düzenlenerek koordinasyon ve iletişim becerileri geliştirilmeli.</li>`);
-                    }
-                    if (!this.state.threatHuntingStarted) {
-                        recommendationsHTML.add(`<li><strong>Proaktif Tehdit Avcılığı (Threat Hunting) Kapasitesi:</strong> Şirket içi siber tehdit avcılığı yetenekleri geliştirilerek gelişmiş ve bilinmeyen tehditler proaktif olarak tespit edilmeli.</li>`);
-                    }
-
-
-                    recommendationsList.innerHTML = Array.from(recommendationsHTML).map(rec => `<li><i class="fa-solid fa-angle-right"></i> ${rec.substring(4)}</li>`).join('');
-
-                    document.getElementById('finalSection').insertAdjacentHTML('beforeend', `
-                        <p style="margin-top: 30px; font-size: 1.2em; color: var(--accent-yellow);">Bu simülasyon, modern siber saldırıların karmaşıklığını ve siber güvenlik uzmanlarının sadece teknik değil, aynı zamanda sosyal ve analitik becerilerinin ne kadar hayati olduğunu gösterdi. ÇOLHAK Teknoloji olarak bu krizden güçlenerek çıkmak için çalışmaya devam etmeliyiz.</p>
-                    `);
+                    this.saveLeaderboard(totalScore);
                 },
 
                 updateSlackChat(currentSection) {
@@ -1253,7 +1376,6 @@
                     const section = document.getElementById(sectionId);
                     if (!section) return;
 
-                    // Dynamically update Cemil's status in day2_afternoon_crisis_mgmt
                     if (sectionId === 'day2_afternoon_crisis_mgmt') {
                         const cemilStatusSpan = section.querySelector('#cemil-status');
                         if (cemilStatusSpan) {
@@ -1274,7 +1396,7 @@
                             <p>CTI Şefi olarak yeni haftaya başlarken, birden fazla kaynaktan gelen rahatsız edici sinyaller **alarm zillerini** çaldırıyor.</p>
                             <p><strong>Olay 1: CEO'dan Tuhaf E-posta</strong><br>CEO Elara Yılmaz'dan, ekinde 'Proje_AI_Optimizasyon_V3.pdf' bulunan şüpheli bir e-posta aldınız. Dilbilgisi hataları ve gönderen adresindeki küçük bir yazım hatası (<code>.co</code> yerine <code>.com</code>) dikkat çekiyor. Bir hedefli oltalama mı?</p>
                             <p><strong>Olay 2: LinkedIn'den Tuhaf İş Teklifi</strong><br>Ar-Ge mühendisi Ozan Demirci, LinkedIn'den "çok cazip" bir iş teklifi aldığını belirtti. Teklifin rakip bir firmanın "Global Ar-Ge Direktörü"nden geldiği iddia ediliyor. Profil profesyonel görünse de, bazı detaylar Ozan'a tuhaf geliyor ve özel bir portala yönlendiriliyor.</p>
-                            <img src="linkedin.png" alt="Şüpheli e-posta ve LinkedIn mesajı" class="scenario-image">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e38f6b0f5139265f" alt="Şüpheli e-posta ve LinkedIn mesajı" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Siber İstihbarat Şefi olarak ilk adımlarınız ne olacak? Bu iki farklı vektörü nasıl ele alacaksınız? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1300,7 +1422,7 @@
                         <div id="day1_evening_phishing" class="section" data-max-selections="2">
                             <h2><i class="fa-solid fa-cloud-moon"></i> Gün 1: Akşam - İstihbarat Toplama ve Müdahale Stratejisi</h2>
                             <h3>Akşam 18:00 - İçeriden Şüpheler ve Kararlar</h3>
-                            <img src="tespit.png" alt="WhatsApp ve telefon görüşmesi ekran görüntüleri" class="scenario-image">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/914c6e91f16d80de" alt="WhatsApp ve telefon görüşmesi ekran görüntüleri" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Bu yeni ve derinleşen saldırı vektörlerine karşı nasıl bir istihbarat toplama ve müdahale stratejisi izleyeceksiniz? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1318,7 +1440,7 @@
                             <h3>Sabah 10:00 - AI Projesi Tehlikede! Cemil Kaan Şüphesi!</h3>
                             <p>E-posta analizi yapıldıysa, CEO'ya gelen e-postadaki zararlı yazılımın analizi tamamlandı. Yazılımın **'Proje Yapay Zeka' klasörüne erişmeye çalıştığı** tespit edildi. Bu, fikri mülkiyetin hedef alındığını gösteriyor. LinkedIn, WhatsApp ve telefon görüşmeleri, bu erişim için personel güvenini kazanma çabalarıydı.</p>
                             <p>En endişe verici gelişme: Eğer personel görüşmeleri veya iç ağ izlemesi yaptıysanız, **Finans Departmanından Cemil Kaan'ın, kriz başında normalde erişimi olmayan kritik klasöre anormal erişim denemeleri yaptığı** ortaya çıktı. Cemil'in finansal sıkıntıları ve rakip teklif dedikoduları da mevcut.</p>
-                            <img src="risk.png" alt="AI projesi veri sızıntısı riski" class="scenario-image">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e0cc37682dd40989" alt="AI projesi veri sızıntısı riski" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Fikri mülkiyeti korumak, saldırıyı durdurmak ve iç tehdidi yönetmek için en kritik eylemleriniz ne olacak? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1336,7 +1458,7 @@
                             <h2><i class="fa-solid fa-lightbulb"></i> Gün 2: Öğleden Sonra - Kriz Yönetimi ve Karar Alma (Yüksek Baskı)</h2>
                             <h3>Öğleden Sonora 15:30 - Kriz Ekibi Baskı Altında</h3>
                             <p>Saldırı detayları netleşti: Yapay zeka projenizin fikri mülkiyeti ciddi tehdit altında ve <span id="cemil-status">${game.state.cemilConfronted ? '<strong>Cemil Kaan\'ın manipüle edildiği veya içeriden bilgi sızdırdığı itirafı alındı.</strong>' : 'içeriden bir "köstebek" veya manipüle edilmiş bir çalışan şüphesi var.'}</span> CEO hızla aksiyon ve net mesaj istiyor. Finans Direktörü hukuki süreçler ve kayıplar konusunda endişeli. İK Direktörü çalışan moralini ve güvenini vurguluyor.</p>
-                            <img src="team.png" alt="Kriz yönetim ekibi" class="scenario-image">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e6113b567d4f9d45" alt="Kriz yönetim ekibi" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Krizin bu aşamasında, hangi stratejik kararları alacaksınız? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1353,7 +1475,7 @@
                             <h2><i class="fa-solid fa-check-circle"></i> Gün 3: Sabah - Toparlanma ve Gelecek Stratejileri</h2>
                             <h3>Sabah 11:00 - Kriz Sonrası Toparlanma</h3>
                             <p>Olayın en yoğun dönemi geride kaldı. Saldırının kapsamı ve etkileri anlaşıldı ${game.state.cemilConfronted ? 've Cemil Kaan\'ın durumu ele alındı.' : '.'} ÇOLHAK Teknoloji'nin bu deneyimden ders çıkarıp gelecekteki siber tehditlere karşı daha dirençli hale gelmesi gerekiyor. Fikri mülkiyetin korunması, çalışan güveninin yeniden sağlanması ve şirketin itibarının onarılması öncelikler arasında. Siber İstihbarat Şefi olarak, dersleri somut eylem planlarına dönüştürme ve uzun vadeli bir güvenlik stratejisi önerme göreviniz var.</p>
-                            <img src="kurtarma.png" alt="Kurtarma ve iyileşme çabaları görseli" class="scenario-image">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/ab24b890a2a1b9f6" alt="Kurtarma ve iyileşme çabaları görseli" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>Şirketinizin gelecekteki siber dayanıklılığı için hangi uzun vadeli stratejileri önereceksiniz? (2 Seçim Yapın)</h4>
                                 <div class="decision-buttons">
@@ -1378,18 +1500,139 @@
                                     <ul id="decision-timeline-list"></ul>
                                 </div>
                                 <div class="strategic-debrief">
-                                    <h3><i class="fa-solid fa-lightbulb"></i> Stratejik Değerlendirme ve Dersler</h3>
+                                    <h3><i class="fa-solid fa-lightbulb"></i> Stratejik Değerlendirme</h3>
                                     <div id="strategic-debrief-content"></div>
+                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Puan Dökümü</h3>
+                                    <ul id="score-breakdown"></ul>
                                 </div>
                             </div>
-                            <div class="decision-buttons" style="margin-top: 40px;">
+                            <div class="decision-buttons" style="margin-top: 40px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
                                 <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Simülasyonu Yeniden Başlat</button>
+                                <button class="btn" id="openLeaderboardBtn"><i class="fa-solid fa-trophy"></i> Liderlik Tablosu</button>
                             </div>
                         </div>
                     `;
                     this.elements.gameContent.innerHTML = gameHTMLContent;
                     this.elements.sections = this.elements.gameContent.querySelectorAll('.section');
+                    // Re-bind leaderboard open button after dynamic HTML insertion
+                    this.elements.leaderboard.btnOpen = document.getElementById('openLeaderboardBtn');
+                    this.elements.leaderboard.btnOpen?.addEventListener('click', () => this.openLeaderboard());
+
                     hljs.highlightAll();
+                },
+
+                // YENİ FONKSİYONLAR: TIMER & LEADERBOARD
+                startGlobalTimer() {
+                    if (this.timer.running) return;
+                    this.timer.running = true;
+                    this.timer.remaining = this.timer.total;
+                    this.updateTimerUI();
+                    this.timer.intervalId = setInterval(() => {
+                        this.timer.remaining--;
+                        this.updateTimerUI();
+                        if (this.timer.remaining <= 0) {
+                            this.stopGlobalTimer();
+                            alert("Süre doldu! Rapor oluşturuluyor.");
+                            this.showFinalReport();
+                        }
+                    }, 1000);
+                },
+
+                stopGlobalTimer() {
+                    if (this.timer.intervalId) clearInterval(this.timer.intervalId);
+                    this.timer.intervalId = null;
+                    this.timer.running = false;
+                },
+
+                updateTimerUI() {
+                    const m = String(Math.floor(this.timer.remaining / 60)).padStart(2,'0');
+                    const s = String(this.timer.remaining % 60).padStart(2,'0');
+                    if (this.elements.statusBar.remaining) {
+                        this.elements.statusBar.remaining.textContent = `${m}:${s}`;
+                    }
+                },
+
+                openLeaderboard() {
+                    this.elements.leaderboard.overlay.style.display = 'flex';
+                    this.loadLeaderboard();
+                },
+
+                closeLeaderboard() {
+                    this.elements.leaderboard.overlay.style.display = 'none';
+                },
+
+                async saveLeaderboard(finalScore) {
+                    let name = localStorage.getItem('playerName');
+                    if (!name || name.trim() === '') {
+                        name = prompt("Liderlik tablosu için isminizi girin:", "Anonim");
+                        if (!name || name.trim() === '') name = 'Anonim';
+                        localStorage.setItem('playerName', name);
+                    }
+                    
+                    const payload = {
+                        scenario: 'v5-phishing',
+                        name: name.toString().slice(0, 40),
+                        score: finalScore,
+                        details: {
+                            ipIntegrity: this.score.ipIntegrity,
+                            financialLoss: this.score.financialLoss,
+                            employeeTrust: this.score.employeeTrust,
+                            reputation: this.score.reputation,
+                            decisions: this.state.decisionHistory.map(d => d.id)
+                        },
+                        timeSpentSec: this.timer.total - this.timer.remaining,
+                        timestamp: new Date().toISOString()
+                    };
+
+                    try {
+                        // Bu kısım gerçek bir backend API'sine istek gönderir.
+                        // Örnek amaçlı olduğu için başarısız olacak ve localStorage'a yönelecektir.
+                        const res = await fetch('/api/score', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (!res.ok) throw new Error('API isteği başarısız: ' + res.status);
+                    } catch(e) {
+                        console.warn("API'ye ulaşılamadı. Puan yerel olarak saklanıyor.");
+                        const key = 'leaderboard-v5-phishing';
+                        const arr = JSON.parse(localStorage.getItem(key) || '[]');
+                        arr.push(payload);
+                        arr.sort((a,b)=> b.score - a.score);
+                        localStorage.setItem(key, JSON.stringify(arr.slice(0,100)));
+                    }
+                },
+
+                async loadLeaderboard() {
+                    const tbody = this.elements.leaderboard.body;
+                    const key = 'leaderboard-v5-phishing';
+                    tbody.innerHTML = `<tr><td colspan="4">Yükleniyor…</td></tr>`;
+                    let rows = [];
+                    try {
+                        const res = await fetch('/api/leaderboard?scenario=v5-phishing', { method:'GET' });
+                        if (!res.ok) throw new Error('API isteği başarısız: ' + res.status);
+                        const data = await res.json();
+                        rows = Array.isArray(data) ? data : [];
+                    } catch(e) {
+                        console.warn("API'ye ulaşılamadı. Liderlik tablosu yerelden yükleniyor.");
+                        const arr = JSON.parse(localStorage.getItem(key) || '[]');
+                        rows = arr.map(x => ({ name: x.name, score: x.score, timestamp: x.timestamp }));
+                    }
+
+                    if (!rows.length) {
+                        tbody.innerHTML = `<tr><td colspan="4">Henüz kayıt bulunmuyor.</td></tr>`;
+                        return;
+                    }
+                    
+                    rows.sort((a,b)=> b.score - a.score);
+                    tbody.innerHTML = rows.slice(0,50).map((r,i)=>`
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${(r.name || 'Anonim').toString().slice(0,40)}</td>
+                            <td>${r.score}</td>
+                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('tr-TR') : '-'}</td>
+                        </tr>
+                    `).join('');
                 }
             };
             window.game.setup();
